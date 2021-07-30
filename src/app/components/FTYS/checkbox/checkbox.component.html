@@ -1,0 +1,23 @@
+
+   <div class="info">
+    <ion-label>{{ lab }}</ion-label>
+    <div class="guia">
+      <ion-chip color="warning" *ngIf="hel !== ''">{{ hel }}</ion-chip>
+      <ion-chip color="danger" *ngIf="required === 'true'"><ion-icon class="icon" name="alert-circle-outline"></ion-icon> Requerido</ion-chip>
+    </div>
+   </div>
+   <ion-list *ngIf="readonly">
+      <ion-item *ngFor="let opt of opts" lines="none">
+        <ion-checkbox [disabled]="readonly" [checked]="opt.checked" slot="start" value="{{ opt.txt }}"></ion-checkbox>
+        <ion-label  class="ion-text-wrap">{{ opt.txt }}</ion-label>
+      
+      </ion-item>
+   </ion-list>
+
+   <ion-list *ngIf="!readonly">
+    <ion-item *ngFor="let opt of opts" lines="none">
+      <ion-icon name="ellipse" slot="start" color="primary"></ion-icon>
+      <ion-label  class="ion-text-wrap">{{ opt.txt }}</ion-label>
+    
+    </ion-item>
+ </ion-list>

@@ -1,0 +1,15 @@
+
+ <div class="info" *ngIf="!hid">
+  <ion-label>{{ lab }}</ion-label>
+  <div class="guia">
+    <ion-chip color="warning" *ngIf="hel !== ''">{{ hel }}</ion-chip>
+    <ion-chip color="danger" *ngIf="required === 'true'"><ion-icon class="icon" name="alert-circle-outline"></ion-icon> Requerido</ion-chip>
+  </div>
+ </div>
+ <ion-list *ngIf="!hid">
+   <ion-item lines="none">
+    <ion-icon name="eye-outline" slot="start" *ngIf="readonly === 'true'"></ion-icon>
+    <ion-datetime [disabled]="readonly === 'true'" displayFormat="DD MMMM YYYY, HH:mm" placeholder="Select Date" [value]="myDate" display-timezone="America/Bogota">
+    </ion-datetime>
+   </ion-item>
+ </ion-list>

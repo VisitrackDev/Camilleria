@@ -1,0 +1,45 @@
+ion-card-title {
+    text-align: center;
+}
+
+ion-card-content  {
+    width: 100%;
+}
+
+.fltext {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: .8;
+}
+
+.yellow {
+    background-color: #FFE597;
+    color: #000000;
+}
+
+.rj {
+    color: red;
+}
+
+.vd {
+    color: green;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    max-width: 250px !important;
+}
+
+.fl {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

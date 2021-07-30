@@ -1,0 +1,99 @@
+<!-- <ion-header [translucent]="true">
+    <ion-toolbar color="light">
+        <ion-avatar class="avt" slot="start">
+            
+        </ion-avatar>
+        <ion-title>
+            Camilleros App
+        </ion-title>
+
+        <ion-avatar class="avt" slot="end">
+            <img src="/assets/vt.jpg" alt="">
+        </ion-avatar>
+    </ion-toolbar>
+</ion-header> -->
+
+<ion-content class="ion-padding">
+
+
+
+    <div class="contenedor margin">
+
+        <div class="im">
+            <img src="https://s3.amazonaws.com/logocompanies/CC55B13F-5CA2-4420-A313-539CD18BD5B4.png" alt="">
+        </div>
+
+        <!-- <ion-grid>
+      <ion-row>
+        <ion-col size="6"> <ion-button expand="block" fill="outline" color="primary" (click)="changeApp('1')">VT WEB</ion-button ></ion-col>
+        <ion-col size="6"> <ion-button expand="block" fill="outline" color="danger" (click)="changeApp('2')">VT ENTRENA</ion-button></ion-col>
+      </ion-row>
+    </ion-grid> -->
+        <div *ngIf="(id !== 'sin id' && id !== '')" class="web">
+
+            <h3>Credenciales de Usuario</h3>
+            <ion-list>
+
+                <!-- <ion-item lines="none" class="campos">
+                    <ion-icon slot="start" name="person-outline"></ion-icon>
+                    <ion-input [value]="id" type="text" placeholder="id"></ion-input>
+                </ion-item>
+ -->
+
+                <ion-item lines="none" class="campos">
+                    <ion-icon slot="start" name="person-outline"></ion-icon>
+                    <ion-input [(ngModel)]="login.user" type="text" placeholder="Usuario"></ion-input>
+                </ion-item>
+
+                <ion-item lines="none" class="campos">
+                    <ion-icon slot="start" name="lock-closed-outline"></ion-icon>
+                    <ion-input [(ngModel)]="login.password" clearOnEdit="false" type="password" placeholder="Contraseñas"></ion-input>
+                </ion-item>
+            </ion-list>
+
+            <ion-grid fixed>
+                <ion-row class="ion-margin-bottom">
+                    <ion-col size="10" offset="1" class="ct">
+                        <app-marcacion [pending]="false"  txt="Iniciar Sesión" type="login" color="primary" compare="" [lg]="login" (propagar)="scannerQR($event)"></app-marcacion>
+                        
+                        <!-- <ion-button (click)="entry()">Entrar</ion-button> -->
+                    </ion-col>
+                </ion-row>
+
+                <div *ngIf="statusResponse">
+                    <ion-row>
+                        <ion-col size="10" offset="1" class="center row">
+                            <ion-spinner name="crescent" color="danger"></ion-spinner>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row>
+                        <ion-col size="10" offset="1" class="center row">
+                            <p>Accediendo a la cuenta</p>
+                        </ion-col>
+                    </ion-row>
+                </div>
+            </ion-grid>
+        </div>
+
+        <div *ngIf="(id === 'sin id' || id === '')"  class="msg">
+            <h3>Cargando configuración de la aplicación...</h3>
+        </div>
+
+
+    </div>
+
+</ion-content>
+
+<ion-footer [translucent]="true">
+    <ion-toolbar mode="ios" color="light">
+
+        <ion-title class="title">
+            Visitrack &copy; 2021 - V1.1.3
+        </ion-title>
+
+        <ion-avatar class="avt" slot="end">
+            <img src="/assets/vt.jpg" alt="">
+        </ion-avatar>
+    </ion-toolbar>
+</ion-footer>

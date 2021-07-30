@@ -1,0 +1,105 @@
+<ion-header [translucent]="true">
+    <ion-toolbar color="light">
+        <ion-avatar class="avt" slot="start" *ngIf="img !== ''">
+            <img [src]="img" alt="">
+        </ion-avatar>
+        <ion-title>
+            Lista de Servicios
+        </ion-title>
+
+        <ion-avatar class="avt" slot="end">
+            <img src="/assets/vt.jpg" alt="">
+        </ion-avatar>
+    </ion-toolbar>
+
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content  pullingText="Cargando Actividades" refreshingSpinner="circles" refreshingText="Refrescando...">
+        </ion-refresher-content>
+    </ion-refresher>
+
+    <!-- <ion-searchbar mode="ios" placeholder="Buscar Solicitud por nombre, origen o destino" (ionChange)="changeText($event)"></ion-searchbar>
+    <br> -->
+
+
+
+
+    <div class="flexdiv" *ngIf="active">
+        <img src="/assets/prohibido.jpg" width="200px" alt="">
+        <h2>Usted tiene un servicio activo, debe terminarlo para poder ver mas servicios</h2>
+    </div>
+
+
+    <div class="flexdiv" *ngIf="load && activitiesList.length === 0 && !active">
+        <h2>Usted no tiene servicios asignados en este momento</h2>
+    </div>
+
+
+
+    <div class="flexdiv" *ngIf="!load && !active">
+        <ion-spinner name="crescent" color="primary"></ion-spinner>
+        <strong>Cargando Actividades</strong>
+    </div>
+
+
+    <div class="list" >
+     
+        <ion-card mode="ios" *ngFor="let activity of activitiesList; let i = index;" (click)="changeStatus(activity, i)">
+
+            <ion-card-header [class]="activity.extras | motivo : true">
+                <ion-title>Solicitud</ion-title>
+            </ion-card-header>
+
+            <ion-card-content>
+                <ion-label class="ion-text-wrap">
+
+                    <div><strong>Solicitado por:</strong> <span> {{ activity.extras.Values | filtrosValues : 'NOMBRE' }}</span> </div>
+
+
+
+                    <span *ngIf="activity.extras.zone === 'rng'"><strong>Origen: </strong> {{ activity.extras.Values | filtrosValues : 'ORIGEN_RIONEGRO' }}</span> <br>
+
+                    <span *ngIf="activity.extras.zone === 'rng'"><strong>Destino: </strong> {{ activity.extras.Values | filtrosValues : 'DESTINO_RIONEGRO' }}</span>
+
+                    <span *ngIf="activity.extras.zone === 'med'"><strong>Origen: </strong> {{ activity.extras.Values | filtrosValues : 'ORIGEN_MEDELLIN' }}</span> <br>
+
+                    <span *ngIf="activity.extras.zone === 'med'"><strong>Destino: </strong> {{ activity.extras.Values | filtrosValues : 'DESTINO_MEDELLIN' }}</span> <br> <br>
+                    <div>Motivo: {{ activity.extras | motivo : false}}</div>
+                    <!-- <div><strong>Solicitado por: </strong> <span [class.green]="(activity.extras.Values | filtrosValues : 'HOSPITAL').includes('RIONEGRO') " [class.orange]="(activity.extras.Values | filtrosValues : 'HOSPITAL').includes('MED') ">{{ activity.extras.Values | filtrosValues : 'HOSPITAL' }}</span></div> -->
+                    <div><strong>Prioridad:</strong> <span>{{ activity.extras.prioridad }}</span> </div>
+
+
+
+                    <div>
+                        <strong>Activity ID: </strong>
+                        <span>{{ activity.ID }}</span>
+                    </div>
+
+                    <div class="fl fecha">
+                        <ion-icon name="alarm-outline"></ion-icon>
+                        <span>{{ activity.extras.Values | filtrosValues : 'FECHA' }} - {{ activity.extras.Values | filtrosValues : 'HORA' }}</span>
+                    </div> <br>
+                    <ion-chip color="success" *ngIf="activity.extras.validate">Solicitud en ejecución</ion-chip>
+                </ion-label>
+            </ion-card-content>
+        </ion-card>
+
+    </div>
+
+
+
+</ion-content>
+
+<ion-footer class="ion-no-border" [translucent]="true">
+    <ion-toolbar mode="ios" color="light">
+
+        <ion-title class="title">
+            Camilleria - V1.1.3
+        </ion-title>
+
+    
+    </ion-toolbar>
+</ion-footer>

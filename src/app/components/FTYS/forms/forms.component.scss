@@ -1,0 +1,77 @@
+ion-slides {
+    min-height: 100vh;
+}
+
+.apoyo{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #F4E387;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+ion-content {
+    height: calc(100% - 100px);
+    position: fixed;
+}
+
+ion-footer {
+    background: var(--ion-color-light);
+    position: fixed;
+    bottom: 0;
+}
+
+.botones {
+    display: flex;
+}
+
+.left,
+.right,
+.info {
+    width: 33.33%;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left ion-button,
+.right ion-button {
+    width: 100%;
+}
+
+.info h3 {
+    color: var(--ion-color-primary);
+}
+
+ion-col {
+    margin-bottom: 15px;
+}
+
+
+ion-grid {
+    animation: entry .8s ease-in-out;
+}
+
+.flc{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+
+@keyframes entry {
+    from {
+        opacity: .1;
+        transform: scale(.1);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

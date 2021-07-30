@@ -1,0 +1,19 @@
+ion-button {
+     width: 100%;
+     display: flex;
+     text-align: center;
+}
+
+ion-label {
+     text-align: left;
+}
+
+.icon {
+     margin-right: 2px;
+}
+
+.info {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+}

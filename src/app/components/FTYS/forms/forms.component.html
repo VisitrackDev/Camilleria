@@ -1,0 +1,89 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+
+    <div *ngIf="aditional" class="apoyo">CAMILLERO DE APOYO</div>
+
+    <ion-grid *ngIf="pages.length > 0">
+        <ion-row *ngFor="let fie of pages">
+            <ion-col size="12">
+                <app-title *ngIf="fie.fty === 'title'" [fie]="fie" title="{{ fie.lab }}" [values]="values"></app-title>
+
+                <app-text-line *ngIf="fie.fty === 'text'" id="{{ fie.id }}" lab="{{ fie.lab }}" required="{{ fie.req }}" hel="{{ fie.hel }}" pho="{{ fie.pho }}" api="{{ fie.apiId }}" [values]="values" [readonly]="true" [idActivity]="id"></app-text-line>
+
+                <app-date *ngIf="fie.fty === 'date'" [readonly]="true" lab="{{ fie.lab }}" required="{{ fie.req }}" hel="{{ fie.hel }}" [values]="values" api="{{ fie.apiId }}" [idActivity]="id"></app-date>
+
+                <app-time *ngIf="fie.fty === 'time'" [readonly]="true" lab="{{ fie.lab }}" required="{{ fie.req }}" hel="{{ fie.hel }}" [values]="values" api="{{ fie.apiId }}" [idActivity]="id"></app-time>
+
+                <app-address *ngIf="fie.fty === 'addressline'" readonly="{{ fie.rea }}" lab="{{ fie.lab }}" required="{{ fie.req }}" hel="{{ fie.hel }}" pho="{{ fie.pho }}" [values]="values"></app-address>
+
+                <app-email *ngIf="fie.fty === 'email'" readonly="{{ fie.rea }}" lab="{{ fie.lab }}" required="{{ fie.req }}" hel="{{ fie.hel }}" pho="{{ fie.pho }}" [values]="values" [idActivity]="id"></app-email>
+
+                <app-cell-phone *ngIf="fie.fty === 'cellphone'" readonly="{{ fie.rea }}" lab="{{ fie.lab }}" required="{{ fie.req }}" hel="{{ fie.hel }}" pho="{{ fie.pho }}" [values]="values" [idActivity]="id"></app-cell-phone>
+
+                <app-phone *ngIf="fie.fty === 'phone'" readonly="{{ fie.rea }}" lab="{{ fie.lab }}" required="{{ fie.req }}" hel="{{ fie.hel }}" pho="{{ fie.pho }}" [values]="values" [idActivity]="id"></app-phone>
+
+                <app-paragrahp *ngIf="fie.fty === 'paragraph'" txt="{{ fie.txt }}" title="{{ fie.tit }}" [values]="values" [idActivity]="id"></app-paragrahp>
+
+                <app-textarea *ngIf="fie.fty === 'textarea'" lab="{{ fie.lab }}" required="{{ fie.req }}" hel="{{ fie.hel }}" pho="{{ fie.pho }}" [values]="values" api="{{ fie.apiId }}" readonly="{{fie.rea}}" [idActivity]="id"></app-textarea>
+
+                <app-numeric-value *ngIf="fie.fty === 'numeric'" lab="{{ fie.lab }}" required="{{ fie.req }}" hel="{{ fie.hel }}" pho="{{ fie.pho }}" [values]="values" api="{{ fie.apiId }}" readonly="{{fie.rea}}" [idActivity]="id"></app-numeric-value>
+
+
+                <app-radio-buttons *ngIf="fie.fty === 'radio'" api="{{ fie.apiId }}" [readonly]="false" lab="{{ fie.lab }}" required="{{ fie.req }}" hel="{{ fie.hel }}" [opts]="fie.opt" [values]="values" [idActivity]="id" (cerrado)="closeByPending($event)" ></app-radio-buttons>
+
+                <app-checkbox *ngIf="fie.fty === 'checkbox'" api="{{ fie.apiId }}" [readonly]="false" lab="{{ fie.lab }}" required="{{ fie.req }}" hel="{{ fie.hel }}" [opts]="fie.opt" [values]="values" [idActivity]="id"></app-checkbox>
+
+                <app-date-time *ngIf="fie.fty === 'datetime'" readonly="{{ fie.rea }}" lab="{{ fie.lab }}" required="{{ fie.req }}" hel="{{ fie.hel }}" hid="{{fie.hid}}" [values]="values" [idActivity]="id"></app-date-time>
+
+                <app-hyperlink *ngIf="fie.fty === 'hyperlink'" readonly="{{ fie.rea }}" lab="{{ fie.lab }}" required="{{ fie.req }}" hel="{{ fie.hel }}" val="{{ fie.val }}" [values]="values" [idActivity]="id"></app-hyperlink>
+
+
+                <app-picture *ngIf="fie.fty === 'picture'" readonly="{{ fie.rea }}" lab="{{ fie.lab }}" required="{{ fie.req }}" hel="{{ fie.hel }}" [values]="values" [idActivity]="id"></app-picture>
+
+                <app-list *ngIf="fie.fty === 'dropdownlist'" readonly="{{ fie.rea }}" lab="{{ fie.lab }}" required="{{ fie.req }}" hel="{{ fie.hel }}" [values]="values" api="{{ fie.apiId }}" [idActivity]="id"></app-list>
+
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col size="12">
+
+                <ion-button *ngIf="pending"  color="warning" mode="ios" shape="round" (click)="pendingEnd()">TERMINAR ESPERA</ion-button>
+            </ion-col>
+
+        </ion-row>
+
+
+        <ion-row *ngIf="loadDestiny">
+            <ion-col  size="12">
+
+
+
+
+                <div class="flc">
+                    <ion-spinner name="crescent" color="primary" mode="ios">
+
+                    </ion-spinner>
+                    <h4>Procesando</h4>
+                </div>
+
+
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+
+
+           
+            <ion-col size="12">
+
+
+
+
+                <app-marcacion *ngIf="activity.extras.validate && activity.extras.zone === 'med'" type="destino" [pending]="false" txt="ESCANEAR DESTINO" color="primary" compare="{{activity.extras.Values | filtrosValues : 'DESTINO_MEDELLIN'}}" (propagar)="scannerQR($event)"></app-marcacion>
+
+                <app-marcacion *ngIf="activity.extras.validate && activity.extras.zone === 'rng'" type="destino" [pending]="false" txt="ESCANEAR DESTINO" color="primary" compare="{{activity.extras.Values | filtrosValues : 'DESTINO_RIONEGRO'}}" (propagar)="scannerQR($event)"></app-marcacion>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+</ion-content>

@@ -1,0 +1,16 @@
+<div class="info">
+    <ion-label>{{ lab }}</ion-label>
+    <div class="guia">
+        <ion-chip color="warning" *ngIf="hel !== ''">{{ hel }}</ion-chip>
+        <ion-chip color="danger" *ngIf="required === 'true'">
+            <ion-icon class="icon" name="alert-circle-outline"></ion-icon> Requerido</ion-chip>
+    </div>
+</div>
+<ion-list>
+    <ion-radio-group [value]="value" (ionChange)="change($event)">
+        <ion-item *ngFor="let opt of opts" lines="none">
+            <ion-label class="ion-text-wrap">{{ opt.txt }}</ion-label>
+            <ion-radio [disabled]="readonly" slot="start" value="{{ opt.txt }}"></ion-radio>
+        </ion-item>
+    </ion-radio-group>
+</ion-list>

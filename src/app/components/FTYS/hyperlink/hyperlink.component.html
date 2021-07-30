@@ -1,0 +1,14 @@
+
+ <div class="info">
+  <ion-chip color="success">Enlace</ion-chip>
+  <div class="guia">
+    <ion-chip color="warning" *ngIf="hel !== ''">{{ hel }}</ion-chip>
+    <ion-chip color="danger" *ngIf="required === 'true'"><ion-icon class="icon" name="alert-circle-outline"></ion-icon> Requerido</ion-chip>
+  </div>
+ </div>
+    
+    <ion-button [disabled]="readonly === 'true'" color="light" [href]="val" expand="block" mode="md">
+      <ion-icon name="eye-outline" slot="start" *ngIf="readonly === 'true'" shape="round"></ion-icon>
+      <ion-label>{{lab}}</ion-label>
+    </ion-button>
+ 

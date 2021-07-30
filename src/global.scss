@@ -1,0 +1,58 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+
+/* Core CSS required for Ionic components to work properly */
+
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+.error {
+    --background: var(--ion-color-danger) !important;
+}
+
+.custom-ion-content{
+    --background:transparent;
+}
+
+.avt {
+    width: 40px;
+    ;
+    height: 40px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.avt img {
+    width: 50px;
+    height: 50px;
+}
+
+.info ion-label {
+    width: 100%;
+    padding: 10px;
+    background-color: #e1e1e1;
+    margin-bottom: 10px;
+}

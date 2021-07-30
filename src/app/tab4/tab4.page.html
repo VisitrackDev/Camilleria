@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-title>
+            Turn on GPS in Ionic
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <ion-button color="danger" (click)="checkPermission()">
+        Enable GPS Locaction
+    </ion-button>
+
+    <ion-button color="danger" (click)="checkPermission()">
+        Enable GPS Locaction
+    </ion-button>
+
+    <ion-row>
+        <ion-col>Longtitude</ion-col>
+        <ion-col> {{locationCordinates.longitude}}</ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>Latitude</ion-col>
+        <ion-col>{{locationCordinates.latitude}}</ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>Location accuracy</ion-col>
+        <ion-col>{{locationCordinates.accuracy}}</ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>Timestamp</ion-col>
+        <ion-col>{{locationCordinates.timestamp | date:'medium'}}</ion-col>
+    </ion-row>
+</ion-content>

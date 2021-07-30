@@ -1,0 +1,22 @@
+ion-datetime {
+     width: 100%;
+     padding: 10px 20px;
+     background: var(--ion-color-light);
+     border-radius: 20px;
+     border: 1px solid rgba(0,0,0,0.1);
+     text-align: center;
+}
+
+ion-label {
+     text-align: left;
+}
+
+.icon {
+     margin-right: 2px;
+}
+
+.info {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+}

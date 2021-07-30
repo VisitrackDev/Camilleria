@@ -1,0 +1,22 @@
+<div class="info">
+    <ion-label>{{ lab }}</ion-label>
+    <div class="guia">
+        <ion-chip color="warning" *ngIf="hel !== ''">{{ hel }}</ion-chip>
+        <ion-chip color="danger" *ngIf="required === 'true'">
+            <ion-icon class="icon" name="alert-circle-outline"></ion-icon> Requerido</ion-chip>
+    </div>
+</div>
+<ion-list>
+    <ion-item lines="none">
+        <ion-icon name="eye-outline" *ngIf="readonly === 'true'" slot="start"></ion-icon>
+        <ion-input type="number" placeholder="{{pho}}" [value]="value" [disabled]="readonly" (ionChange)="change($event)"></ion-input>
+    </ion-item>
+</ion-list>
+
+
+<div class="flc"*ngIf="loadNumeric">
+    <ion-spinner name="crescent" color="primary" mode="ios">
+
+    </ion-spinner>
+    <h4>Procesando</h4>
+</div>

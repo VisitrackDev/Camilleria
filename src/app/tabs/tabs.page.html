@@ -1,0 +1,32 @@
+<ion-tabs>
+
+    <ion-tab-bar [color]="color" slot="bottom">
+
+
+        <ion-tab-button *ngIf="!events && red" tab="tab1">
+            <ion-icon name="triangle"></ion-icon>
+            <ion-label>Asignaciones</ion-label>
+        </ion-tab-button>
+
+        <!-- <ion-tab-button *ngIf="active && !events && red" tab="tab2">
+            <ion-icon name="ellipse"></ion-icon>
+            <ion-label>En ejecucion</ion-label>
+        </ion-tab-button> -->
+
+        <ion-tab-button *ngIf="!events && red" tab="tab3">
+            <ion-icon name="settings"></ion-icon>
+            <ion-label>Configuración</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button *ngIf="events && red" tab="tab5">
+            <ion-icon name="timer"></ion-icon>
+            <ion-label>Descansando</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button *ngIf="!red">
+            <ion-icon name="wifi"></ion-icon>
+            <ion-label>Fuera de Linea</ion-label>
+        </ion-tab-button>
+    </ion-tab-bar>
+
+</ion-tabs>

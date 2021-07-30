@@ -1,0 +1,53 @@
+<ion-header [translucent]="true">
+    <ion-toolbar color="light">
+        <ion-avatar class="avt" slot="start" *ngIf="img !== ''">
+            <img [src]="img" alt="">
+        </ion-avatar>
+        <ion-title>
+            Configuración
+        </ion-title>
+
+        <ion-avatar class="avt" slot="end">
+            <img src="/assets/vt.jpg" alt="">
+        </ion-avatar>
+    </ion-toolbar>
+
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <br>
+    <ion-card mode="ios" class="center">
+        <img src="/assets/usuario.jpg" width="80%" alt="">
+        <ion-card-header>
+            <ion-card-title>{{ user }} <br> {{ iduser }}</ion-card-title>
+        </ion-card-header> <br>
+
+        <ion-card-content class="fl">
+            <ion-button mode="ios" shape="round" color="primary" (click)="markerDes()">Descanso</ion-button>
+
+            <app-marcacion *ngIf="!stop" txt="Cerrar Sesión" type="logout" color="secondary" [pending]="pending" compare="" (propagar)="scannerQR($event)"></app-marcacion>
+        </ion-card-content>
+
+
+    </ion-card> <br>
+
+
+    <ion-card mode="ios" class="center">
+      
+        <ion-card-content >
+            <h3 class="fltext"><strong>Versión: </strong> <div> 1.1.3</div> </h3>
+            <h3 class="fltext"><strong>Fecha: </strong> <div> 30-07-2021</div> </h3>
+        </ion-card-content>
+
+
+    </ion-card> <br>
+    <ion-list class="center">
+
+
+        <!-- <ion-button (click)="closeSession()">Cerrar</ion-button> -->
+
+    </ion-list>
+
+
+
+</ion-content>

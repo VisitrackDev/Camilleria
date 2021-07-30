@@ -1,0 +1,99 @@
+<ion-header [translucent]="true">
+    <ion-toolbar color="light">
+        <ion-avatar class="avt" slot="start" *ngIf="img !== ''">
+            <img [src]="img" alt="">
+        </ion-avatar>
+        <ion-title>
+            Mis Actividades
+        </ion-title>
+
+        <ion-avatar class="avt" slot="end">
+            <img src="/assets/vt.jpg" alt="">
+        </ion-avatar>
+    </ion-toolbar>
+
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="Cargando Actividades" refreshingSpinner="circles" refreshingText="Refrescando...">
+        </ion-refresher-content>
+    </ion-refresher>
+
+    <div class="flexdiv" *ngIf="!load">
+        <ion-spinner name="crescent" color="primary"></ion-spinner>
+        <strong>Cargando Actividades</strong>
+    </div>
+
+    <ion-card mode="ios" *ngFor="let activity of activitiesList; let i = index;">
+
+        <ion-card-header>
+            <ion-card-title>{{ activity.extras | motivo : false}}</ion-card-title>
+        </ion-card-header>
+    <div *ngIf="aditional" class="apoyo">CAMILLERO DE APOYO</div>
+
+        <ion-card-content>
+            <ion-label class="ion-text-wrap">
+                <span *ngIf="activity.extras.zone === 'med'"><strong>Origen: </strong> {{ activity.extras.Values | filtrosValues : 'ORIGEN_MEDELLIN' }}</span> <br>
+
+                <span *ngIf="activity.extras.zone === 'med'"><strong>Torre y piso: </strong> {{ activity.extras.Values | filtrosValues : 'TORREPISO_ORG' }}</span> <br> <br>
+
+                <span *ngIf="activity.extras.zone === 'med'"><strong>Destino: </strong> {{ activity.extras.Values | filtrosValues : 'DESTINO_MEDELLIN' }}</span> <br>
+
+                <span *ngIf="activity.extras.zone === 'med'"><strong>Torre y piso: </strong> {{ activity.extras.Values | filtrosValues : 'TORREPISO_DESTINO' }}</span> <br>
+
+                <span *ngIf="activity.extras.zone === 'rng'"><strong>Origen: </strong> {{ activity.extras.Values | filtrosValues : 'ORIGEN_RIONEGRO' }}</span> <br>
+
+                <span *ngIf="activity.extras.zone === 'rng'"><strong>Torre y piso: </strong> {{ activity.extras.Values | filtrosValues : 'TORREPISO_ORG' }}</span> <br>
+
+                <span *ngIf="activity.extras.zone === 'rng'"><strong>Destino: </strong> {{ activity.extras.Values | filtrosValues : 'DESTINO_RIONEGRO' }}</span> <br>
+
+                <span *ngIf="activity.extras.zone === 'rng'"><strong>Torre y piso: </strong> {{ activity.extras.Values | filtrosValues : 'TORREPISO_DESTINO' }}</span> <br>
+
+                <br>
+
+                <div *ngIf="activity.extras.paciente && !aditional">
+                    <span><strong>Aislado: </strong> {{ activity.extras.Values | filtrosValues : 'AISLADO' }}</span> <br>
+                    <span><strong>Recursos: </strong> {{ activity.extras.Values | filtrosValues : 'RECURSOS' }}</span> <br>
+
+                    <span><strong>Nombre del paciente: </strong> {{ activity.extras.Values | filtrosValues : 'NOMBRE_PACIENTE' }}</span> <br>
+
+
+                </div>
+
+                <span *ngIf="!aditional"><strong>Observaciones Adicionales: </strong> {{ activity.extras.Values | filtrosValues : 'OBSERVACIONES1' }}</span> <br>
+                <span><strong>Observaciones Central: </strong> {{ activity.extras.Values | filtrosValues : 'OBSERVACIONES2' }}</span> <br>
+
+
+
+                <div>
+                    <strong>Activity ID: </strong>
+                    <span>{{ activity.ID }}</span>
+                </div>
+
+
+            </ion-label>
+
+            <br>
+
+            <div *ngIf="activity.extras.validate" class="green"><strong>Origen verificado correctamente</strong></div>
+
+            <!-- <div *ngIf="!activity.extras.validate" class="orange"><strong>Origen sin verificar</strong></div> -->
+
+
+            <ion-button *ngIf="activity.extras.validate" mode="ios" expand="block" shape="round" color="success" (click)="changeStatus(activity, i)">ENTRAR </ion-button>
+
+            <app-marcacion *ngIf="!activity.extras.validate && activity.extras.zone === 'med' && !stop" txt="ESCANEAR ORIGEN" color="success" [pending]="false"  type="origen" compare="{{activity.extras.Values | filtrosValues : 'ORIGEN_MEDELLIN'}}" (propagar)="scannerQR($event, activity)"></app-marcacion>
+
+            <app-marcacion *ngIf="!activity.extras.validate && activity.extras.zone === 'rng' && !stop" txt="ESCANEAR ORIGEN" color="success" [pending]="false"  type="origen" compare="{{activity.extras.Values | filtrosValues : 'ORIGEN_RIONEGRO'}}" (propagar)="scannerQR($event, activity)"></app-marcacion>
+
+            <!-- <div>
+                <ion-button mode="ios" expand="block" shape="round" color="success" (click)="changeStatus(activity, i)">ENTRAR </ion-button>
+
+            </div> -->
+        </ion-card-content>
+    </ion-card>
+
+
+</ion-content>

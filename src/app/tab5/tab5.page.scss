@@ -1,0 +1,30 @@
+.flexc {
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.time {
+    font-weight: bold;
+    font-size: 32px;
+    color: #7B9DCF;
+    animation: move 1s ease-in-out 2s infinite alternate;
+}
+
+img {
+    animation: move 1s ease-in-out 2s infinite alternate;
+}
+
+@keyframes move {
+    from {
+        transform: translateY(-20px);
+        opacity: .3;
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
